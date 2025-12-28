@@ -1,0 +1,169 @@
+{
+  "info": {
+    "name": "Participant Dashboard API",
+    "description": "Complete API collection for testing Participant Dashboard Application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Participants",
+      "item": [
+        {
+          "name": "Create Participant",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "http://localhost:8080/api/participants",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phoneNumber\": \"+1234567890\",\n  \"department\": \"IT\",\n  \"designation\": \"Software Engineer\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Participants",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/participants"
+          }
+        },
+        {
+          "name": "Get Participant by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/participants/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Training Programs",
+      "item": [
+        {
+          "name": "Create Training Program",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "http://localhost:8080/api/programs",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Spring Boot Fundamentals\",\n  \"description\": \"Comprehensive Spring Boot training\",\n  \"trainerName\": \"Jane Smith\",\n  \"durationHours\": 40,\n  \"startDate\": \"2025-01-15T09:00:00\",\n  \"endDate\": \"2025-01-19T17:00:00\",\n  \"maxParticipants\": 20,\n  \"status\": \"SCHEDULED\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Programs",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/programs"
+          }
+        },
+        {
+          "name": "Get Upcoming Programs",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/programs/upcoming"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Enrollments",
+      "item": [
+        {
+          "name": "Enroll Participant",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "http://localhost:8080/api/enrollments",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"participantId\": 1,\n  \"programId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Participant Enrollments",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/enrollments/participant/1"
+          }
+        },
+        {
+          "name": "Update Completion",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "http://localhost:8080/api/enrollments/1/completion",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"percentage\": 75.0\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Schedules",
+      "item": [
+        {
+          "name": "Send Session Reminders",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/schedules/send-reminders"
+          }
+        },
+        {
+          "name": "Get Upcoming Sessions",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/schedules/upcoming"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Feedbacks",
+      "item": [
+        {
+          "name": "Submit Feedback",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "http://localhost:8080/api/feedbacks/enrollment/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 5,\n  \"comments\": \"Excellent training program!\",\n  \"trainerRating\": 5,\n  \"contentRating\": 4,\n  \"deliveryRating\": 5,\n  \"recommendation\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Program Average Rating",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/feedbacks/program/1/average-rating"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        {
+          "name": "Get Unread Notifications",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/notifications/participant/1/unread"
+          }
+        },
+        {
+          "name": "Mark as Read",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:8080/api/notifications/1/read"
+          }
+        }
+      ]
+    }
+  ]
+}
